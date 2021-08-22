@@ -1,0 +1,492 @@
+%package list
+\documentclass{article}
+\usepackage[top=3cm, bottom=3cm, outer=3cm, inner=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{url}
+%\usepackage{cite}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{multicol}
+\newcolumntype{x}[1]{>{\centering\arraybackslash\hspace{0pt}}p{#1}}
+%\usepackage{natbib}
+\usepackage{pdfpages}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{algorithm,algorithmic}
+
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+
+%for Graphs and nodes
+\usepackage{pst-all}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{style_code}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=style_code}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\csemail}{mquispecr@unsa.edu.pe}
+\newcommand{\csdocente}{Marcela Quispe Cruz}
+\newcommand{\cscurso}{Teoría de la Computación}
+\newcommand{\csuniversidad}{Universidad Nacional de San Agustín}
+\newcommand{\csescuela}{Maestría en Ciencia de la Computación}
+\newcommand{\cspracnr}{02}
+\newcommand{\cstema}{Lógica de Primer Orden}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage[english,spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+
+%%%% prooftrees
+\usepackage{prooftrees}
+\usepackage{mathtools,turnstile,pifont}
+\usepackage{bookmark}
+
+\newcommand*{\tnot}{\ensuremath{\mathord{\sim}}}
+\newcommand*{\lif}{\ensuremath{\mathbin{\rightarrow}}}
+\newcommand*{\liff}{\ensuremath{\mathbin{\leftrightarrow}}}
+\newcommand*\TikZ{Ti\emph{k}Z}
+\newcommand*{\elim}{\,\text{E}}
+\newcommand*\wff{\emph{wff}}
+%%%%%%%%%%%%%%%%
+
+
+\AtBeginDocument{\selectlanguage{spanish}}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\refname}{Referencias}
+\renewcommand{\tablename}{Tabla} %esto no funciona cuando se usa babel
+\AtBeginDocument{%
+	\renewcommand\tablename{Tabla}
+}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{30pt}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\fancyhead[L]{\raisebox{-0.2\height}{\includegraphics[width=3cm]{img/logo_unsa}}}
+\fancyhead[C]{}
+\fancyhead[R]{\fontsize{7}{7}\selectfont	\csuniversidad \\ \csescuela \\ \textbf{\cscurso} }
+\fancyfoot[L]{Dra. Marcela Quispe Cruz}
+\fancyfoot[C]{\cscurso}
+\fancyfoot[R]{Página \thepage}
+
+
+
+
+
+
+
+\begin{document}
+	
+	%\vspace*{10px}
+	
+	\begin{center}	
+		\fontsize{17}{17} \textbf{ Práctica \cspracnr}
+	\end{center}
+	%\centerline{\textbf{\underline{\Large Título: Informe de revisión del estado del arte}}}
+	%\vspace*{0.5cm}
+	
+
+	\begin{table}[h]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\textbf{DOCENTE} & \textbf{CARRERA}  & \textbf{CURSO}   \\
+			\hline 
+			\csdocente & \csescuela & \cscurso    \\
+			\hline 
+		\end{tabular}
+	\end{table}	
+	
+	
+	\begin{table}[h]
+		\begin{tabular}{|x{4.7cm}|x{4.8cm}|x{4.8cm}|}
+			\hline 
+			\textbf{PRÁCTICA} & \textbf{TEMA}  & \textbf{DURACIÓN}   \\
+			\hline 
+			\cspracnr & \cstema & 3 horas   \\
+			\hline 
+		\end{tabular}
+	\end{table}
+	
+	
+	\section{Datos de los estudiantes}
+	\begin{itemize}
+		\item Grupo: 9
+		\item Integrantes: 
+		\begin{itemize}
+			\item Abarca Murillo, Jhonatan Piero
+			\item Apari Pinto, Christian Timoteo
+			\item Suca Velando, Christian Anthony
+			\item Vargas Zuni, Arturo
+		\end{itemize}
+		%%\item Repositorio: \url{https://github.com/jabarcamu/}
+	\end{itemize}
+	
+
+	
+	\section{Ejercicios}\label{sec:ejercicios}
+	\begin{enumerate}
+
+		\item Considere el lenguaje $\mathscr{L} = \langle  R^1, a^0, b^0, F^2 \rangle $ en que:
+		
+		$R$ es una relación; \\
+		$a$ y $b$ son constante; \\
+		$F$ es una función; \\
+		\begin{enumerate}
+		    \item Haga lo que se pide , todas las definiciones de términos, fórmulas bien formadas y estructuras, están directamente basadas en la definición de la sintaxis y semántica de la lógica de primer orden en base al universo de discurso \cite{huth2004logic}:
+		    \begin{enumerate}
+		        \item Escriba 4 términos de ese lenguaje.
+		        \begin{itemize}
+		            \item Variables: $t_1 = x$
+		            \item Constantes $t_2 = a, t_3 = b$
+		            \item Funciones $t_4 = f(f(a,b),a)$
+		        \end{itemize}
+		        \item Escriba 3 fórmulas sin utilizar constantes.
+		            \begin{itemize}
+		                \item $\varphi_1 := \forall x \forall y \exists z((z=s(x,y) \land R(x) \land R(y)) \to R(z))$
+		                \item $\varphi_2 := \forall x \forall y \forall z((z=s(x,y) \land R(x) \land R(y)) \to R(z))$
+		                \item $\varphi_3 := \exists x \exists y ((z=s(x,y) \land  \neg R(x) \land \neg R(y)) \to R(z))$
+		            \end{itemize}
+		        \item Escriba 3 fórmulas utilizando apenas constantes.
+		            \begin{itemize}
+		                \item $\varphi_1 := \exists x (R(f(a,x)))$
+		                \item $\varphi_2 := 
+		                \neg \exists ∃x(R(x) \land  \neg R(x))$
+		                \item $\varphi_3 := 
+		                \exists x(R(b) \lor \neg R(x))$
+		            \end{itemize}
+		    \end{enumerate}
+		    \item Presente una estructura para $\mathscr{L}$ y diga cuáles fórmulas definidas en el ítem anterior son verdaderas y cuáles son falsas.
+		    
+		    \begin{displayquote}
+    		    $\langle | \mathfrak{A} |$ = números naturales, \\
+    		    $R^\mathfrak{A}$ = es número natural, \\
+    		    $f^\mathfrak{A}$ = la función suma x + y, \\
+    		    $a^\mathfrak{A}$ = a,\\
+    		    $b^\mathfrak{A}$ = b$\rangle$
+    		\end{displayquote}
+		    
+		\end{enumerate}
+		
+		Solución
+		\begin{itemize}
+            \item $(V) = \forall x \forall y \exists z((z=f(x,y) \land R(x) \land R(y)) \to R(z))$
+            \item $(F) = \forall x \forall y \forall z((z=f(x,y) \land R(x) \land R(y)) \to R(z))$
+            \item $(F) = \exists x \exists y ((z=f(x,y) \land  \neg R(x) \land \neg R(y)) \to R(z))$
+            \item $(F) = \exists x (R(f(a,x)))$
+            \item $(V) = 
+            \neg \exists ∃x(R(x) \land  \neg R(x))$
+            \item $(V) = 
+            \exists x(R(b) \lor \neg R(x))$
+        \end{itemize}
+		
+		\item Dado el lenguaje $\mathscr{L} = \langle  <^2, s^1, +^2, \times^2, 0^0 \rangle $ considere la siguiente estructura:
+		
+		\begin{displayquote}
+		    $\langle | \mathfrak{A} |$= números naturales, \\
+		    $<^\mathfrak{A},$= la relación menor que, \\
+		    $s^\mathfrak{A}$= la función sucesor, es decir, $s(x) = x+1$,\\
+		    $+^\mathfrak{A}$= la función suma, \\
+		    $\times^\mathfrak{A}$= la función producto, \\
+		    $0^\mathfrak{A}$= el número cero$\rangle$
+		\end{displayquote}
+		
+		\begin{enumerate}
+		    \item Traduzca para el lenguaje de $\mathfrak{A}$:
+		    \begin{enumerate}
+		        \item $2+2 = 4$
+		            Usaremos los términos definidos en $\mathscr{L}$ el número cero y las función sucesor:
+		            $$ +( s(s(0)),s(s(0)) ) = s(s(s(s(0))))$$
+		            
+		        \item Cero es el único número que no es sucesor de ningún número.
+		            $$\neg \exists x [x = s(0)]$$
+		        
+		        \item No existe un número mayor que todos los otros.
+		            $$ \neg \exists x \forall y (\neg x = y  \rightarrow  <(y,x)) $$
+		        
+		        \item Todo número par mayor que 2 puede ser escrito como la suma de dos primos.\\
+    		        \begin{displayquote}
+    		            Primero definimos un número primo es aquel que tiene dos divisores (a si mismo y uno) estos no son iguales y es representado dentro de los números naturales y también definimos función divisible.
+    		            \\\\
+    		            $Divisible(x,y) \equiv  \exists z [x = \times(z,y)]$ \\\\
+    		            $Primo(x) = \exists y \exists z ( Divisible(x,y) \wedge Divisible(x,z) \wedge \neg y = x \wedge  \forall w (Divisible(x,w) \rightarrow y = w \vee z = w ) )$\\
+    		            
+    		            También definimos la relación es par:
+    		            Todo número par debe ser múltiplo 2 ó es la suma de alguno numero natural por si mismo. (que es lo mismo que sumar 2 veces (obviando el cero como par))\\\\
+    		            
+    		            $Par(x) \equiv \exists y (x = +(y,y))$\\
+    		            
+    		            Ahora traduciendo la sentencia: Todo número par mayor que 2 puede ser escrito como la suma de dos primos.\\
+    		            \\ $\therefore$
+    		            $\forall x( (Par(x) \wedge <(s(s(0)),x)) \rightarrow \exists y \exists z ( Primo(y) \wedge Primo(z) \wedge x = +(y,z)) )$
+    		        \end{displayquote}   
+		            
+		        \item Todo cuadrado perfecto par es divisible por 4.\\
+		            \begin{displayquote}
+    		            Un cuadrado perfecto es resultado del cuadrado de algún otro numero natural, en otras palabras es el doble de cualquier numero por si mismo (y no todos los cuadrados perfectos de los número natural son pares, solo algunos).\\
+    		            $CuadPerf(x) \equiv \exists y [x = \times(y,y)]$\\
+    		            
+    		            También definimos la función divisible nuevamente\\
+    		            $Divisible(x,y) \equiv  \exists z [x = \times(z,y)]$\\
+    		            
+    		            Traduciendo Todo cuadrado perfecto par es divisible por 4.\\
+    		            \\ $\therefore$
+    		            $\forall x(CuadPerf(x) \rightarrow Divisible(x,s(s(s(s(0))))))$\\
+		                
+		            \end{displayquote}
+		            
+		    \end{enumerate}
+		    \item Verifique si es verdadero o falso, justificando:
+		    \begin{enumerate}
+		        \item $\forall x \exists y(+(x, y) = x \land \forall z(+(x, z) = x \to z = y))$ 
+		        \begin{displayquote}
+		            \textbf{Resp. Verdadero}
+    		        \\Y toma un valor de cero y que es el elemento neutral de la suma haciendo para todos los casos dé el mismo número.
+    		        \\
+    		        $+(1,0) = 1 \land +(1,0) = 1 \to z=y=0$
+		        \end{displayquote}
+		        
+		        \item $\forall x \exists y(+(x, y) = \times(x, y))$
+		        \begin{displayquote}
+    		        \textbf{Resp. Falso}
+    		        \\Si a un determinado valor $x$ le sumamos un valor $y$ y realizamos la misma operación con las mismas variables en la multiplicación, es imposible que estos sean equivalentes ya que por ejemplo $x=7$ y $y=3$ dará $10$ y multiplicado dará $21$.
+		        \end{displayquote}
+		        
+		        \item $\forall x\forall y\forall z((x < y \to y < z) \to x < z)$
+		        \begin{displayquote}
+    		        \textbf{Resp. Verdadero}
+    		        \\$\forall x\forall y\forall z(<(x,y) \land < (y,z) \to <(x,z)$
+    		        \\Sea:
+    		        \\S(x) = x+1 = y
+    		        \\S(x+1) = (x+1+1) = z
+    		        \\se puede deducir que:
+    		        \\$(<(x,x+1) \land < (x+1,x+2)) \to <(x,x+2)$
+    		        \\$(V) \land (V) \to (V)$
+    		        \\$(V1)$
+		        \end{displayquote}
+		        
+		        \item $\forall x \forall y \forall z((x < \times(y, z)) \to(x < y \lor x < z))$
+		        \begin{displayquote}
+    		        \textbf{Resp. Falso}
+    		        \\$\forall x \forall y \forall z(<(x,\times(y,z)) \to(<(x,y) \lor <(x,z)))$
+    		        \\ Para este caso se toman los siguientes valores:
+    		        \\x = 4, y = 3, z = 2 
+    		        \\ Entonces
+    		        \\$(<(4,\times(3,2)) \to(<(4,3) \lor <(4,2)))$
+    		        \\$(V) \to (F) \lor (F)$
+    		        \\$(F)$
+    		        \\ No satisface
+    		     \end{displayquote}
+		        
+		    \end{enumerate}
+		\end{enumerate}
+		
+		\item Escriba una sentencia en lógica de primer orden que diferencie las estructuras abajo, es decir, una sentencia que sea válida en una estructura y no sea válida en la otra:
+		\begin{enumerate}
+		    \item $G_1 = \langle \{a,b,c,d,e\}, \{(a,b), (b,c), (b,d), (d,e), (e,c), (c,d)\} \rangle$
+		        \begin{equation}
+		        \begin{aligned}
+		        \mathscr{L} = \langle ; ; f^1 \rangle \\
+		        |A| = \langle a,b,c,d,e \rangle \\
+		        (f^A) = \langle (a,b), (b,c), (b,d), (d,e), (e,c), (c,d) \rangle
+		        \end{aligned}
+		        \end{equation}
+		        
+		        \begin{pspicture}(2,1)
+                \rput(0,0){\circlenode{A}{a}}
+                \rput(2,0){\circlenode{B}{b}}
+                \rput(4,0){\circlenode{C}{c}}
+                \rput(6,0){\circlenode{D}{d}}
+                \rput(8,0){\circlenode{E}{e}}
+                \psset{nodesep=1pt,%
+                linewidth=1.5pt,arrowsize=4pt}
+                \ncarc{->}{A}{B}
+                \ncarc{->}{B}{C}
+                \ncarc{->}{C}{D}
+                \ncarc{->}{D}{E}
+                \ncarc[arcangle=20]{->}{B}{D}
+                \ncarc[arcangle=20]{->}{E}{C}
+                \end{pspicture}\\
+                
+                No existe un vértice que llegue a si mismo
+                $$\exists k (f(k) = k) \Rightarrow F$$
+                Desde cualquier vértice se puede llegar al vértice e
+                $$\forall k (f(k) = e) \Rightarrow V$$
+
+		    \item $G_2 = \langle \{a,b,c,d,e,f \}, \{(c,a), (a,d), (a, f ), (b, f ), (e, f ), (d,e)\} \rangle$
+		    
+		        \begin{equation}
+		        \begin{aligned}
+		        \mathscr{L} = \langle ; ; f^1 \rangle \\
+		        |A| = \langle a,b,c,d,e,f \rangle \\
+		        (f^A) = \langle (c,a), (a,d), (a,f), (b,f), (e,f), (d,e) \rangle
+		        \end{aligned}
+		        \end{equation}
+		        
+		        \begin{pspicture}(2,2)
+                \rput(0,0){\circlenode{A}{a}}
+                \rput(2,0){\circlenode{B}{b}}
+                \rput(4,0){\circlenode{C}{c}}
+                \rput(6,0){\circlenode{D}{d}}
+                \rput(8,0){\circlenode{E}{e}}
+                \rput(10,0){\circlenode{F}{f}}
+                \psset{nodesep=1pt,%
+                linewidth=1.5pt,arrowsize=4pt}
+                \ncarc[arcangle=20]{->}{C}{A}
+                \ncarc[arcangle=20]{->}{A}{D}
+                \ncarc[arcangle=25]{->}{A}{F}
+                \ncarc[arcangle=-20]{->}{B}{F}
+                \ncarc[arcangle=20]{->}{E}{F}
+                \ncarc[arcangle=20]{->}{D}{E}
+                \end{pspicture}\\\\
+                
+                Desde cualquier vértice se puede llegar al vértice f
+                $$\forall x (f(x) = \mathrm{f}) \Rightarrow V$$
+                Ningun nodo llega al vertice c
+                $$\forall k (f(k) = c) \Rightarrow F$$
+		        
+		    
+		\end{enumerate}
+		
+		
+		\item Verifique si los siguientes items son verdaderos o falsos. Justifique a través de tableaux, se utilizo el paquete de representacion de Tablas Logicas de \cite{prooftrees}.
+		\begin{enumerate}
+		    \item 
+		    
+    		    \begin{prooftree}
+                  {
+                    to prove={\forall x \forall y(L(x, y) \to x = y) \models \forall xL(x,x))}
+                  }
+                  [{F(\forall x \forall y(L(x, y) \to x = y) \models \forall xL(x,x)))}, checked=1, name=pr, just=condicional
+                    [{V(\forall x \forall y(L(x, y) \to x = y))}, checked=4
+                      [{F(\forall xL(x,x)))}, checked=2, subs=a
+                       [ {F(L(a,y))}, checked=3, just=$\forall\elim$:!u, name=mark
+                        [{V( \forall y( L(a,y) \to a = y ) )}, checked=5, subs=b, name=res3
+                              [{V(L(a,b) \to a = b}), just=cuaquiera $b$:!u,  name=simple
+                                [{F(L(a,b))}
+                                  [{F(L(a,c))}, name=ind1, just= seguira tomando cualquiera $c$ :!u 
+                                      [{\vdots} , just=indeterminado :ind1
+                                      ]
+                                  ]
+                                ]
+                                [{V(a=b)},just=reutiliza :simple
+                                  [{L(a,b)}
+                                  ]
+                                  [{V(a=c)}, just= seguira tomando cualquiera $c$ :!u, name=ind2
+                                    [{\vdots}, just=indeterminado :ind2]
+                                  ]
+                                ]
+                              ]
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                \end{prooftree}
+		    
+		    \item Es tautología \\
+		    
+                \begin{prooftree}
+                  {
+                    to prove={\forall x \forall y((x = y \land R(x, y)) \to R(x,x)) }
+                  }
+                  [{F(\forall x \forall y((x = y \land R(x, y)) \to R(x,x)))}, checked=1,subs=a, just=nuevo termino $a$ , name=pr
+                    [{F(\forall y((a = y \land R(a, y)) \to R(a,a)))}, checked=2, name=todo
+                      [{V(\forall y((a = y \land R(a, y))))}, checked=3,subs=b, just=cualquier valor $b$ $\exists \elim$:todo, name=iguald
+                        [{F(R(a,a))},  name=result
+                          [{V(a = b \land R(a, b))}, checked=4,just= tomar cualquier valor $b$ :iguald
+                            [{V(a=b)}, just=ambos iguales
+                              [{V(R(a,b))},just= $b$ puede ser $a$ :!u
+                                [{V(R(a,a))},just=es Tautología:result,close={:result,!c}
+                                ]
+                              ]
+                            ]                            
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                \end{prooftree}
+		        
+		    
+		    \item 
+		    \begin{prooftree}
+                  {
+                    to prove={\exists x(P(x) \to Q(x)) \models \exists xP(x) \to \exists xQ(x)}
+                  }
+                  [{F(\exists x(P(x) \to Q(x)) \models \exists xP(x) \to \exists xQ(x)}, checked=1, just=condicional, name=pr
+                    [{V(\exists x(P(x) \to Q(x))}, just=puede reutilizar, name=ext1
+                      [{F(\exists xP(x) \to \exists xQ(x)}, checked=2, name=ext2
+                        [{F(\exists xP(x))}, just={:!u}, checked=3, name=cond1
+                          [{V(\exists xQ(x)},just=:{!uu}, checked=4,name=cond2
+                            [{V(P(a))}, subs=a, just=nuevo valor :cond1, name=pa
+                              [{F(Q(a))}, subs={a,b}, checked=5, just=cualquier valor :cond2, name=qa
+                                [{V(P(b) \to Q(b))},subs=b, just=$\exists \elim$ :ext1 
+                                  [{F(P(b))}, just=no cierra :pa
+                                    [{invalido}]
+                                  ]
+                                  [{V(Q(b))}
+                                    [{V(Q(a))}, close={:qa,!c}
+                                    ]
+                                  ]
+                                ]
+                              ]
+                            ]                            
+                          ]
+                        ]
+                      ]
+                    ]
+                  ]
+                \end{prooftree}
+		\end{enumerate}
+		
+		
+		
+		
+		
+	\end{enumerate}
+
+
+	
+	\clearpage
+	%\bibliographystyle{apalike}
+	\bibliographystyle{ieeetr}
+	%\bibliographystyle{IEEEtranN}
+	\bibliography{biblio}
+		
+	
+\end{document}
